@@ -8,8 +8,8 @@ public:
         return s;
 
         // Solution2
-        /*here ch refers to each character inside the string s, by changing ch it will change string s         also, as it is referenced*/
-        
+        /*here ch refers to each character inside the string s, by changing ch it will change string s         also, becuz ch is referencing to string s*/
+
         // for(char &ch : s) {   
         //     ch = tolower(ch);
         // }
