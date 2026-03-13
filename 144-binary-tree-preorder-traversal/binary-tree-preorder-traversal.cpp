@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    vector <int> res;
+    vector<int> res;
     void preorder(TreeNode* root) {
  
         if(root == NULL) {
