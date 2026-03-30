@@ -7,14 +7,6 @@ public:
                 alphanum += tolower(ch);
             }
         }
-        /* Approach - 01*/
-        // string rev = alphanum;
-        // reverse(rev.begin(), rev.end());
-        // if(rev == alphanum){
-        //     return true;
-        // }
-        // return false;
-
         /* Approach - 02  (two pointer)*/
         int n = alphanum.length();
         int left = 0, right = n - 1;
@@ -27,6 +19,14 @@ public:
               right--;
         }
         return true;
+
+        /* Approach - 01*/
+        // string rev = alphanum;
+        // reverse(rev.begin(), rev.end());
+        // if(rev == alphanum){
+        //     return true;
+        // }
+        // return false;
         
     }
 };
