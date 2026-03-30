@@ -8,12 +8,23 @@ public:
             }
         }
 
-        string rev = alphanum;
-        reverse(rev.begin(), rev.end());
-        if(rev == alphanum){
-            return true;
+        // string rev = alphanum;
+        // reverse(rev.begin(), rev.end());
+        // if(rev == alphanum){
+        //     return true;
+        // }
+        // return false;
+        int n = alphanum.length();
+        int left = 0, right = n - 1;
+
+        while(left < right){
+            if(alphanum[left] != alphanum[right]){
+                return false;
+              }
+              left++;
+              right--;
         }
-        return false;
+        return true;
         
     }
 };
