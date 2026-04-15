@@ -1,6 +1,7 @@
 class Solution {
 public:
     int closestTarget(vector<string>& words, string target, int startIndex) {
+        // Two Direction Traversal Approach
         int n = words.size();
         int right = 0;
         while (right < n){
