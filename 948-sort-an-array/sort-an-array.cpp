@@ -1,73 +1,47 @@
 class Solution {
 public:
-     void merge(vector<int>& nums, int left, int mid, int right) {
-        vector<int> temp;
-        int i = left;
-        int j = mid + 1;
+    void mergeSort(vector<int>& nums, int low, int high){
+        if(low >= high) return;
 
-        while(i <= mid && j <= right) {
-            if(nums[i] <= nums[j]) {
-                temp.push_back(nums[i]);
-                i++;
+        int mid = (low+high)/2;
+        mergeSort(nums, low, mid);
+        mergeSort(nums,mid+1,high);
+        merge(nums,low,mid,high);
+
+    }
+    void merge(vector<int>& nums, int low, int mid, int high){
+        int left = low;
+        int right = mid+1;
+
+        vector<int> temp;
+
+        while(left <= mid && right <= high){
+            if(nums[left] <= nums[right]){
+                temp.push_back(nums[left]);
+                left++;
             }
             else {
-                temp.push_back(nums[j]);
-                j++;
+                temp.push_back(nums[right]);
+                right++;
             }
         }
-
-        while(i <= mid) {
-            temp.push_back(nums[i]);
-            i++;
+        while (left <= mid){
+            temp.push_back(nums[left]);
+            left++;
+        }
+        while (right <= high){
+            temp.push_back(nums[right]);
+            right++;
+        }
+        for(int i=low;i<=high;i++){
+            nums[i] = temp[i-low];
         }
 
-        while(j <= right) {
-            temp.push_back(nums[j]);
-            j++;
-        }
-
-        for(int k = left; k <= right; k++) {
-            nums[k] = temp[k - left];
-        }
     }
-
-    void mergeSort(vector<int>& nums, int left, int right) {
-        if(left >= right) return;
-
-        int mid = left + (right - left) / 2;
-
-        mergeSort(nums, left, mid);
-        mergeSort(nums, mid + 1, right);
-
-        merge(nums, left, mid, right);
-    }
-
     vector<int> sortArray(vector<int>& nums) {
-        mergeSort(nums, 0, nums.size() - 1);
+        int n = nums.size();
+        mergeSort(nums, 0, n-1);
         return nums;
+        
     }
 };
-//     vector<int> sortArray(vector<int>& nums) {
-
-//         /* Brute-force approach, Time= O(N*N), space= O(1) 
-//         int temp=0;
-//         int i,j;
-
-//         for(i=0;i<nums.size();i++){
-//             for(j=i+1;j<nums.size();j++){
-//                 if(nums[j]<nums[i]){
-//                     temp=nums[i];
-//                     nums[i]=nums[j];
-//                     nums[j]=temp;
-                    
-//                 }
-//             }
-//         }
-//         return nums;*/
-
-//         // Optimal  Merge-sort
-
-
-        
-//     }
-// };
